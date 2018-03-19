@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AccuWeather</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="string_import">Import</string>
+    <string name="gallery">Gallery</string>
+    <string name="slideshow">Slideshow</string>
+    <string name="send">Send</string>
+    <string name="share">Share</string>
+    <string name="communicate">Communicate</string>
+    <string name="tools">Tools</string>
+    <string name="android_studio">Julio C</string>
+    <string name="android_studio_android_com">jcamigo01@gmail.com</string>
+    <string name="profile">http://linkedin.com/in/jcamigo01</string>
+    <string name="send_to_profile">Open profile</string>
+</resources>
