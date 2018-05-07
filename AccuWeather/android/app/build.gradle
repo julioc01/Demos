@@ -33,12 +33,19 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
     // Anko Commons
-    compile "org.jetbrains.anko:anko-commons:$anko_version"
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
     // Design
-    compile "org.jetbrains.anko:anko-design:$anko_version" // For SnackBars
+    implementation "org.jetbrains.anko:anko-design:$anko_version" // For SnackBars
     // Coroutine listeners for Anko Layouts
-    compile "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
-    compile "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
+    implementation "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
+    implementation "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
+
+    //RetroFix
+    implementation "com.squareup.retrofit2:retrofit:2.3.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.3.0"
+
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

@@ -6,17 +6,22 @@ import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import org.jetbrains.anko.browse
-import org.jetbrains.anko.contentView
-import org.jetbrains.anko.design.snackbar
 import org.jetbrains.anko.email
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,6 +33,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
+
+            val retrofit = Retrofit.Builder().addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .baseUrl("http://api.openweathermap.org/data/2.5/")
+                    .build()
+
+            retrofit.create(OpenWheatherServices::class.java).currentWheather("Montauban&appid=daf485672da6a93fe72a1d8b39f84cbd").subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe( Consumer {
+                        Log.i("MainActivity", toString())
+                    })
         }
 
         val toggle = ActionBarDrawerToggle(
